@@ -1,7 +1,6 @@
 import Card from "../components/Card";
 import { View, Text, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Header from "../components/Header";
 
 export default function CarrosselScreen() {
   return (
