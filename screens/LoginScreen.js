@@ -1,17 +1,31 @@
-import { View, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import {
   ButtonText,
   InputText,
   InputButton,
+  InputErrorMessage,
 } from "../components/LoginComponents";
 import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const loginFormSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required("Insira seu endereço de email.")
+    .email("Esse endereço de email não é válido."),
+  password: yup.string().required("Insira sua senha."),
+});
 
 export default function LoginScreen({ loginHandler }) {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: { email: "", password: "" } });
+  } = useForm({
+    resolver: yupResolver(loginFormSchema),
+    defaultValues: { email: "", password: "" },
+  });
 
   return (
     <View style={styles.container}>
@@ -28,10 +42,13 @@ export default function LoginScreen({ loginHandler }) {
         )}
         name="email"
       />
+      {errors.email && (
+        <InputErrorMessage>{errors.email.message}</InputErrorMessage>
+      )}
 
       <Controller
         control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
+        render={({ field: { onChange, value } }) => (
           <InputText
             placeholder={"Senha"}
             secureTextEntry
@@ -42,6 +59,9 @@ export default function LoginScreen({ loginHandler }) {
         )}
         name="password"
       />
+      {errors.password && (
+        <InputErrorMessage>{errors.password.message}</InputErrorMessage>
+      )}
 
       <InputButton onPress={handleSubmit(loginHandler)}>
         <ButtonText>Logar</ButtonText>

@@ -22,3 +22,10 @@ export const InputButton = styled.Pressable`
 export const ButtonText = styled.Text`
   font-size: 16px;
 `;
+
+export const InputErrorMessage = styled.Text`
+  font-size: 12px;
+  color: red;
+  margin-top: -8px;
+  margin-bottom: 10px;
+`;
