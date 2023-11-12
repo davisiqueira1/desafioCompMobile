@@ -4,23 +4,46 @@ import {
   InputText,
   InputButton,
 } from "../components/LoginComponents";
+import { useForm, Controller } from "react-hook-form";
 
 export default function LoginScreen({ loginHandler }) {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues: { email: "", password: "" } });
+
   return (
     <View style={styles.container}>
-      <InputText
-        placeholder={"Email"}
-        keyboardType="email-address"
-        autoCapitalize="none"
-        onChangeText={(text) => console.log("email: " + text)}
+      <Controller
+        control={control}
+        render={({ field: { onChange, value } }) => (
+          <InputText
+            placeholder={"Email"}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="email"
       />
-      <InputText
-        placeholder={"Senha"}
-        secureTextEntry
-        autoCapitalize="none"
-        onChangeText={(text) => console.log("senha: " + text)}
+
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <InputText
+            placeholder={"Senha"}
+            secureTextEntry
+            autoCapitalize="none"
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="password"
       />
-      <InputButton onPress={loginHandler}>
+
+      <InputButton onPress={handleSubmit(loginHandler)}>
         <ButtonText>Logar</ButtonText>
       </InputButton>
     </View>
