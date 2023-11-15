@@ -63,8 +63,11 @@ export default function LoginScreen({ loginHandler }) {
         <InputErrorMessage>{errors.password.message}</InputErrorMessage>
       )}
 
-      <InputButton onPress={handleSubmit(loginHandler)}>
-        <ButtonText>Logar</ButtonText>
+      <InputButton
+        onPress={handleSubmit(loginHandler)}
+        android_ripple={{ color: "#ccc" }}
+      >
+        <ButtonText>Entrar</ButtonText>
       </InputButton>
     </View>
   );
