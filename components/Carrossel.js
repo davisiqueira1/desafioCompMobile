@@ -1,11 +1,17 @@
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import Card from "./Card";
 
-export default function Carrossel({ data, renderItem }) {
+export default function Carrossel({ data }) {
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
-        renderItem={renderItem}
+        renderItem={({ item }) => (
+          <Card>
+            <Text>{item.name}</Text>
+            <Image style={styles.image} source={{ uri: item.avatar_url }} />
+          </Card>
+        )}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
@@ -17,5 +23,9 @@ export default function Carrossel({ data, renderItem }) {
 const styles = StyleSheet.create({
   container: {
     height: 200, // height do card
+  },
+  image: {
+    width: 100,
+    height: 100,
   },
 });
