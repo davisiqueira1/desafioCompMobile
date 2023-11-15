@@ -1,7 +1,9 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable, useWindowDimensions } from "react-native";
 export default function Card({ children }) {
+  const { width } = useWindowDimensions();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width: width }]}>
       <Pressable
         style={styles.pressableContainer}
         onPress={() => console.log("pressed")}
@@ -14,9 +16,8 @@ export default function Card({ children }) {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 2,
-    width: "80%",
     height: 200,
+    backgroundColor: "#ccc",
   },
   pressableContainer: {
     flex: 1,

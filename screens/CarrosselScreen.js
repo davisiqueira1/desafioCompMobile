@@ -1,22 +1,27 @@
-import Card from "../components/Card";
 import { View, Text, StyleSheet } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import Card from "../components/Card";
+import Carrossel from "../components/Carrossel";
 
 export default function CarrosselScreen() {
+  const data = [1, 2, 3, 4, 5];
   return (
     <View style={styles.container}>
-      <Card>
-        <Text>Teste</Text>
-      </Card>
-      <StatusBar style="auto" />
+      <Carrossel
+        data={data}
+        renderItem={({ item }) => (
+          <Card>
+            <Text>{item}</Text>
+          </Card>
+        )}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
-    alignItems: "center",
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
 });
