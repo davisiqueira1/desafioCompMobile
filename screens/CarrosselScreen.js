@@ -8,13 +8,14 @@ export default function CarrosselScreen() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [userList, setUserList] = useState([
     {
-      name: "Davi Siqueira",
+      id: 93483437,
+      login: "Davi Siqueira",
       avatar_url: "https://avatars.githubusercontent.com/u/93483437?v=4",
     },
   ]);
 
   const onAddProfile = (newProfile) => {
-    // newProfile: objeto com keys name e avatar_url (por enquanto)
+    // newProfile: objeto com keys id, login e avatar_url (por enquanto)
     setUserList((currentUsers) => [...currentUsers, newProfile]);
   };
 

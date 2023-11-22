@@ -16,7 +16,8 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
       .get(enteredText)
       .then((res) => {
         onAddProfile({
-          name: res.data.name,
+          id: res.data.id,
+          login: res.data.login,
           avatar_url: res.data.avatar_url,
         });
       })

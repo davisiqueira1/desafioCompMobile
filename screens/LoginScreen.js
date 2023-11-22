@@ -29,6 +29,7 @@ export default function LoginScreen({ loginHandler }) {
 
   return (
     <View style={styles.container}>
+      {/* <Image/> logo do github */}
       <Controller
         control={control}
         render={({ field: { onChange, value } }) => (
