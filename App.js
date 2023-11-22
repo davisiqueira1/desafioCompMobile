@@ -13,9 +13,6 @@ import DetalhesScreen from "./screens/DetalhesScreen";
  *
  * ajustar deslogar do drawer
  *
- * apertar no card e aparecer mais informações do perfil
- * modal ou stack navigation?
- *
  * desenvolver funcionalidade de adicionar perfil nos favoritos
  *  - estrelinha no card com context
  *  - perfil agora aparece no carrossel da pagina de favoritos
