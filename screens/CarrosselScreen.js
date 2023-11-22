@@ -1,43 +1,51 @@
 import { View, StyleSheet } from "react-native";
 import Carrossel from "../components/Carrossel";
-import axios from "../services/axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { InputButton, ButtonText } from "../components/ComponentesEstilizados";
+import ModalAdicionar from "../components/ModalAdicionar";
 
 export default function CarrosselScreen() {
-    const [userList, setUserList] = useState([
-        {
-            name: "Davi Siqueira",
-            avatar_url: "https://avatars.githubusercontent.com/u/93483437?v=4",
-        },
-    ]);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [userList, setUserList] = useState([
+    {
+      name: "Davi Siqueira",
+      avatar_url: "https://avatars.githubusercontent.com/u/93483437?v=4",
+    },
+  ]);
 
-    useEffect(() => {
-        axios
-            .get("/torvalds")
-            .then((res) => {
-                setUserList((currentUsers) => [
-                    ...currentUsers,
-                    { name: res.data.name, avatar_url: res.data.avatar_url },
-                ]);
-            })
-            .catch((err) => console.log(err));
-    }, []);
+  const onAddProfile = (newProfile) => {
+    // newProfile: objeto com keys name e avatar_url (por enquanto)
+    setUserList((currentUsers) => [...currentUsers, newProfile]);
+  };
 
-    return (
-        <View style={styles.container}>
-            <Carrossel data={userList} />
-            <InputButton android_ripple={{ color: "#ccc" }}>
-                <ButtonText>Adicionar perfil</ButtonText>
-            </InputButton>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Carrossel data={userList} />
+      <InputButton
+        android_ripple={{ color: "#ccc" }}
+        onPress={setModalIsVisible.bind(this, true)}
+        style={styles.botaoAdicionar}
+      >
+        <ButtonText>Adicionar perfil</ButtonText>
+      </InputButton>
+      {modalIsVisible && (
+        <ModalAdicionar
+          onAddProfile={onAddProfile}
+          setNotVisible={setModalIsVisible.bind(this, false)}
+        />
+      )}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  botaoAdicionar: {
+    width: "40%",
+    marginTop: 12,
+  },
 });

@@ -11,7 +11,14 @@ import FavoritosScreen from "./screens/FavoritosScreen";
 /**
  * TODO
  * criar botão e tela para adicionar perfil do github no carrossel de cards
+ *  vai subir um modal
  *  entrada: nome no github
+ *  fazer aparecer telinha de erro caso o perfil não exista
+ *
+ * apertar no card e aparecer mais informações do perfil
+ * modal ou stack navigation?
+ *
+ * pagina de favoritos
  *
  * criar fluxo de autenticação com perfil do github
  * (o primeiro card vai ter o nome e foto de perfil do usuario que deu login ao invés de ser hardcoded)
@@ -27,7 +34,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="dark-content" />
       {logado ? (
         <NavigationContainer>
           <Drawer.Navigator
