@@ -10,8 +10,6 @@ import FavoritosScreen from "./screens/FavoritosScreen";
 
 /**
  * TODO
- * modal de adicionar perfis
- *  - fazer aparecer telinha de erro caso o perfil não exista
  *
  * apertar no card e aparecer mais informações do perfil
  * modal ou stack navigation?

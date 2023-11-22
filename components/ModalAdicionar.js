@@ -1,4 +1,4 @@
-import { View, Modal, StyleSheet } from "react-native";
+import { View, Modal, StyleSheet, Alert } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import axios from "../services/axios";
@@ -15,9 +15,14 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
     axios
       .get(enteredText)
       .then((res) => {
-        onAddProfile({ name: res.data.name, avatar_url: res.data.avatar_url });
+        onAddProfile({
+          name: res.data.name,
+          avatar_url: res.data.avatar_url,
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Alert.alert("Erro!", "Esse perfil não existe.");
+      });
     setEnteredText("");
   };
 
