@@ -1,15 +1,17 @@
 import "react-native-gesture-handler"; // necessário para fazer o drawer funcionar
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import CarrosselScreen from "./screens/CarrosselScreen";
+import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
 import { useState } from "react";
 import IconButton from "./components/IconButton";
-import FavoritosScreen from "./screens/FavoritosScreen";
+import DrawerNavigator from "./screens/DrawerNavigator";
+import DetalhesScreen from "./screens/DetalhesScreen";
 
 /**
  * TODO
+ *
+ * ajustar deslogar do drawer
  *
  * apertar no card e aparecer mais informações do perfil
  * modal ou stack navigation?
@@ -25,7 +27,7 @@ import FavoritosScreen from "./screens/FavoritosScreen";
  *
  */
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   const [logado, setLogado] = useState(false);
@@ -35,23 +37,14 @@ export default function App() {
       <StatusBar style="dark-content" />
       {logado ? (
         <NavigationContainer>
-          <Drawer.Navigator
-            screenOptions={{
-              headerRight: () => (
-                <IconButton
-                  iconName="log-out-outline"
-                  color="black"
-                  onPress={setLogado.bind(this, false)}
-                />
-              ),
-            }}
-          >
-            <Drawer.Screen name="Todos os perfis" component={CarrosselScreen} />
-            <Drawer.Screen
-              name="Perfis favoritados"
-              component={FavoritosScreen}
+          <Stack.Navigator>
+            <Stack.Screen
+              options={{ headerShown: false }}
+              name="Todos os perfis"
+              component={DrawerNavigator}
             />
-          </Drawer.Navigator>
+            <Stack.Screen name="Detalhes" component={DetalhesScreen} />
+          </Stack.Navigator>
         </NavigationContainer>
       ) : (
         <LoginScreen loginHandler={setLogado.bind(this, true)} />

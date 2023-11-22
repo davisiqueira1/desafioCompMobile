@@ -38,7 +38,7 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
             style={styles.inputText}
             onChangeText={textInputHandler}
             autoCapitalize="none"
-            value={enteredText} // quando adicionar uma tarefa, o campo vai ser limpo (linha 21)
+            value={enteredText} // quando adicionar um perfil, o campo vai ser limpo (linha 21)
           />
           <View style={styles.buttonContainer}>
             <InputButton style={styles.button} onPress={setNotVisible}>

@@ -1,13 +1,10 @@
 import { View, StyleSheet, Pressable, useWindowDimensions } from "react-native";
-export default function Card({ children }) {
+export default function Card({ onPress, children }) {
   const { width } = useWindowDimensions();
 
   return (
     <View style={[styles.container, { width: width }]}>
-      <Pressable
-        style={styles.pressableContainer}
-        onPress={() => console.log("pressed")}
-      >
+      <Pressable style={styles.pressableContainer} onPress={onPress}>
         <View style={styles.content}>{children}</View>
       </Pressable>
     </View>

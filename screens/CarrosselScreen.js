@@ -4,12 +4,12 @@ import { useState } from "react";
 import { InputButton, ButtonText } from "../components/ComponentesEstilizados";
 import ModalAdicionar from "../components/ModalAdicionar";
 
-export default function CarrosselScreen() {
+export default function CarrosselScreen({ navigation }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [userList, setUserList] = useState([
     {
       id: 93483437,
-      login: "Davi Siqueira",
+      login: "davisiqueira1",
       avatar_url: "https://avatars.githubusercontent.com/u/93483437?v=4",
     },
   ]);
@@ -21,7 +21,7 @@ export default function CarrosselScreen() {
 
   return (
     <View style={styles.container}>
-      <Carrossel data={userList} />
+      <Carrossel navigation={navigation} data={userList} />
       <InputButton
         android_ripple={{ color: "#ccc" }}
         onPress={setModalIsVisible.bind(this, true)}
