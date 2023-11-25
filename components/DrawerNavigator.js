@@ -1,12 +1,11 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
-import IconButton from "../components/IconButton";
-import CarrosselScreen from "./CarrosselScreen";
-import FavoritosScreen from "./FavoritosScreen";
+import CarrosselScreen from "../screens/CarrosselScreen";
+import FavoritosScreen from "../screens/FavoritosScreen";
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerNavigator() {
+export default function DrawerNavigator({ route, navigation }) {
   return (
     <Drawer.Navigator>
       <Drawer.Screen
@@ -14,13 +13,6 @@ export default function DrawerNavigator() {
           title: "Todos os perfis",
           drawerIcon: ({ color, size }) => (
             <Ionicons name="person" color={color} size={size} />
-          ),
-          headerRight: () => (
-            <IconButton
-              iconName="log-out-outline"
-              color="black"
-              // onPress={deslogar}
-            />
           ),
         }}
         name="Carrossel"

@@ -4,14 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
 import { useState } from "react";
-import IconButton from "./components/IconButton";
-import DrawerNavigator from "./screens/DrawerNavigator";
+import { Ionicons } from "@expo/vector-icons";
+import DrawerNavigator from "./components/DrawerNavigator";
 import DetalhesScreen from "./screens/DetalhesScreen";
 
 /**
  * TODO
- *
- * ajustar deslogar do drawer
  *
  * desenvolver funcionalidade de adicionar perfil nos favoritos
  *  - estrelinha no card com context
@@ -40,7 +38,20 @@ export default function App() {
               name="Todos os perfis"
               component={DrawerNavigator}
             />
-            <Stack.Screen name="Detalhes" component={DetalhesScreen} />
+            <Stack.Screen
+              options={{
+                headerRight: () => (
+                  <Ionicons
+                    style={{ marginRight: 16 }}
+                    name="star-outline"
+                    color="black"
+                    size={24}
+                  />
+                ),
+              }}
+              name="Detalhes"
+              component={DetalhesScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       ) : (
