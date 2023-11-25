@@ -15,11 +15,7 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
     axios
       .get(enteredText)
       .then((res) => {
-        onAddProfile({
-          id: res.data.id,
-          login: res.data.login,
-          avatar_url: res.data.avatar_url,
-        });
+        onAddProfile(res.data);
       })
       .catch((err) => {
         Alert.alert("Erro!", "Esse perfil não existe.");

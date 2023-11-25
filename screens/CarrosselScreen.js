@@ -3,19 +3,14 @@ import Carrossel from "../components/Carrossel";
 import { useState } from "react";
 import { InputButton, ButtonText } from "../components/ComponentesEstilizados";
 import ModalAdicionar from "../components/ModalAdicionar";
+import defaultProfile from "../data/defaultProfile";
+import axios from "axios";
 
 export default function CarrosselScreen({ navigation }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
-  const [userList, setUserList] = useState([
-    {
-      id: 93483437,
-      login: "davisiqueira1",
-      avatar_url: "https://avatars.githubusercontent.com/u/93483437?v=4",
-    },
-  ]);
+  const [userList, setUserList] = useState([defaultProfile]);
 
   const onAddProfile = (newProfile) => {
-    // newProfile: objeto com keys id, login e avatar_url (por enquanto)
     setUserList((currentUsers) => [...currentUsers, newProfile]);
   };
 

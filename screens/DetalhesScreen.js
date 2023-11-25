@@ -1,9 +1,16 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function DetalhesScreen({ route, navigation }) {
+  const profile = route.params.profileDetails;
   return (
-    <View>
-      <Text>{route.params.profileDetails.id}</Text>
+    <View style={styles.container}>
+      <Text>{profile.id}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
