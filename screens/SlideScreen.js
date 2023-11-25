@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import Carrossel from "../components/Slide";
 import { useState } from "react";
-import { InputButton, ButtonText } from "../components/StyledComponents";
+import InputButton from "../components/InputButton";
 import AddProfileModal from "../components/AddProfileModal";
 import defaultProfile from "../data/defaultProfile";
 
@@ -17,11 +17,10 @@ export default function CarrosselScreen({ navigation }) {
     <View style={styles.container}>
       <Carrossel navigation={navigation} data={userList} />
       <InputButton
-        android_ripple={{ color: "#ccc" }}
         onPress={setModalIsVisible.bind(this, true)}
         style={styles.addButton}
       >
-        <ButtonText>Adicionar perfil</ButtonText>
+        Adicionar perfil
       </InputButton>
       {modalIsVisible && (
         <AddProfileModal

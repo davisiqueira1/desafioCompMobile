@@ -1,11 +1,10 @@
 import { View, Modal, StyleSheet, Alert } from "react-native";
 import { useState } from "react";
-import {
-  StatusBar,
-  setStatusBarNetworkActivityIndicatorVisible,
-} from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
+import { Ionicons } from "@expo/vector-icons";
 import axios from "../services/axios";
-import { ButtonText, InputButton, InputText } from "./StyledComponents";
+import { InputText } from "./StyledComponents";
+import InputButton from "./InputButton";
 
 export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
   const [enteredText, setEnteredText] = useState("");
@@ -33,7 +32,12 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
       <StatusBar style="dark-content" />
       <Modal animationType="slide">
         <View style={styles.container}>
-          {/* <Image/> logo do github */}
+          <Ionicons
+            style={{ marginBottom: 24 }}
+            name="logo-github"
+            size={128}
+            color="black"
+          />
           <InputText
             placeholder="Digite o nome de um perfil no GitHub"
             style={styles.inputText}
@@ -43,10 +47,10 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
           />
           <View style={styles.buttonContainer}>
             <InputButton style={styles.button} onPress={setNotVisible}>
-              <ButtonText>Cancelar</ButtonText>
+              Cancelar
             </InputButton>
             <InputButton style={styles.button} onPress={addProfileHandler}>
-              <ButtonText>Adicionar</ButtonText>
+              Adicionar
             </InputButton>
           </View>
         </View>

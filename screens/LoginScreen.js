@@ -2,9 +2,10 @@ import { View, StyleSheet } from "react-native";
 import {
   ButtonText,
   InputText,
-  InputButton,
   InputErrorMessage,
 } from "../components/StyledComponents";
+import InputButton from "../components/InputButton";
+import { Ionicons } from "@expo/vector-icons";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -29,6 +30,12 @@ export default function LoginScreen({ loginHandler }) {
 
   return (
     <View style={styles.container}>
+      <Ionicons
+        style={{ marginBottom: 24 }}
+        name="logo-github"
+        size={128}
+        color="black"
+      />
       {/* <Image/> logo do github */}
       <Controller
         control={control}
@@ -64,12 +71,7 @@ export default function LoginScreen({ loginHandler }) {
         <InputErrorMessage>{errors.password.message}</InputErrorMessage>
       )}
 
-      <InputButton
-        onPress={handleSubmit(loginHandler)}
-        android_ripple={{ color: "#ccc" }}
-      >
-        <ButtonText>Entrar</ButtonText>
-      </InputButton>
+      <InputButton onPress={handleSubmit(loginHandler)}>Entrar</InputButton>
     </View>
   );
 }

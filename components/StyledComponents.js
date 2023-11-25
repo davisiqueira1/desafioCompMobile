@@ -7,19 +7,11 @@ export const InputText = styled.TextInput`
   margin-bottom: 8px;
   padding-left: 12px;
   border-width: 1px;
-  border-color: #dfdfdf;
-`;
-
-export const InputButton = styled.Pressable`
-  width: 80%;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  background-color: #dfdfdf;
+  border-color: #353935;
 `;
 
 export const ButtonText = styled.Text`
+  color: white;
   font-size: 16px;
 `;
 
