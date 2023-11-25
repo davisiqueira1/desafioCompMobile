@@ -1,5 +1,6 @@
 import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 import Card from "./Card";
+import Profile from "./DetailsScreen/Profile";
 
 const onCardPress = (navigation, profileDetails) => {
   navigation.navigate("Detalhes", {
@@ -14,8 +15,7 @@ export default function Carrossel({ navigation, data }) {
         data={data}
         renderItem={({ item }) => (
           <Card onPress={onCardPress.bind(this, navigation, item)}>
-            <Text>{item.login}</Text>
-            <Image style={styles.image} source={{ uri: item.avatar_url }} />
+            <Profile profile={item} />
           </Card>
         )}
         horizontal

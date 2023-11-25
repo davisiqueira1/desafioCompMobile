@@ -1,56 +1,41 @@
 import { View, Text, StyleSheet, Image } from "react-native";
-import NumberStats from "../components/NumberStats";
+import NumberStats from "../components/DetailsScreen/NumberStats";
+import DetailContainer from "../components/DetailsScreen/DetailContainer";
+import NumberStatsContainer from "../components/DetailsScreen/NumberStatsContainer";
+import Profile from "../components/DetailsScreen/Profile";
 
-export default function DetalhesScreen({ route, navigation }) {
+export default function DetalhesScreen({ route }) {
   const profile = route.params.profileDetails;
   return (
     <View style={styles.container}>
       <View style={styles.profileStats}>
-        <View style={styles.details}>
-          <Image style={styles.image} source={{ uri: profile.avatar_url }} />
-          <View style={styles.identification}>
-            <Text style={styles.identificationName}>{profile.name}</Text>
-            <Text style={styles.identificationLogin}>{profile.login}</Text>
-          </View>
-        </View>
-        <View style={styles.numberStats}>
-          <NumberStats title={profile.following} subtitle="Following" />
-          <NumberStats title={profile.followers} subtitle="Followers" />
-          <NumberStats title={profile.public_repos} subtitle="Repositories" />
-        </View>
-        <View></View>
+        <Profile style={styles.profile} profile={profile} />
+        <NumberStatsContainer profile={profile} />
       </View>
-      <View></View>
+      <View style={styles.teste}>
+        <DetailContainer profile={profile} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  teste: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 8,
+    paddingVertical: 16,
+  },
+  profile: {
+    marginBottom: 8,
+    paddingBottom: 16,
+  },
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
   profileStats: {
     marginTop: 32,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-  details: {
-    // backgroundColor: "#ccc",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
-  identification: {
-    marginLeft: 28,
-    justifyContent: "center",
-  },
-  identificationName: {
-    fontSize: 24,
-  },
-  identificationLogin: {
-    fontSize: 14,
   },
   numberStats: {
     marginTop: 24,
