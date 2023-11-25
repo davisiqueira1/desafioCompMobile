@@ -5,19 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
 import { useState } from "react";
 import DrawerNavigator from "./components/DrawerNavigator";
-import DetalhesScreen from "./screens/DetalhesScreen";
+import DetailsScreen from "./screens/DetailsScreen";
 import FavoritesContextProvider from "./context/favoritesContext";
 
 /**
- * TODO
- *
- * desenvolver funcionalidade de adicionar perfil nos favoritos
- *  - estrelinha no card com context
- *  - perfil agora aparece no carrossel da pagina de favoritos
- *
- * criar fluxo de autenticação com perfil do github
- * (o primeiro card vai ter o nome e foto de perfil do usuario que deu login ao invés de ser hardcoded)
- * tem como fazer isso?
  *
  * estilizar telas etc
  *
@@ -26,12 +17,12 @@ import FavoritesContextProvider from "./context/favoritesContext";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [logado, setLogado] = useState(false);
+  const [logged, setLogged] = useState(false);
 
   return (
     <>
       <StatusBar style="dark-content" />
-      {logado ? (
+      {logged ? (
         <FavoritesContextProvider>
           <NavigationContainer>
             <Stack.Navigator>
@@ -40,12 +31,12 @@ export default function App() {
                 name="Todos os perfis"
                 component={DrawerNavigator}
               />
-              <Stack.Screen name="Detalhes" component={DetalhesScreen} />
+              <Stack.Screen name="Detalhes" component={DetailsScreen} />
             </Stack.Navigator>
           </NavigationContainer>
         </FavoritesContextProvider>
       ) : (
-        <LoginScreen loginHandler={setLogado.bind(this, true)} />
+        <LoginScreen loginHandler={setLogged.bind(this, true)} />
       )}
     </>
   );

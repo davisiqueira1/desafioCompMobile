@@ -1,8 +1,8 @@
 import { View, StyleSheet } from "react-native";
-import Carrossel from "../components/Carrossel";
+import Carrossel from "../components/Slide";
 import { useState } from "react";
-import { InputButton, ButtonText } from "../components/ComponentesEstilizados";
-import ModalAdicionar from "../components/ModalAdicionar";
+import { InputButton, ButtonText } from "../components/StyledComponents";
+import AddProfileModal from "../components/AddProfileModal";
 import defaultProfile from "../data/defaultProfile";
 
 export default function CarrosselScreen({ navigation }) {
@@ -19,12 +19,12 @@ export default function CarrosselScreen({ navigation }) {
       <InputButton
         android_ripple={{ color: "#ccc" }}
         onPress={setModalIsVisible.bind(this, true)}
-        style={styles.botaoAdicionar}
+        style={styles.addButton}
       >
         <ButtonText>Adicionar perfil</ButtonText>
       </InputButton>
       {modalIsVisible && (
-        <ModalAdicionar
+        <AddProfileModal
           onAddProfile={onAddProfile}
           setNotVisible={setModalIsVisible.bind(this, false)}
         />
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  botaoAdicionar: {
+  addButton: {
     width: "40%",
     marginTop: 12,
   },

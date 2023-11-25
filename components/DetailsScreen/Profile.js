@@ -5,7 +5,10 @@ export default function Profile({ profile, style }) {
     <View style={[styles.details, style]}>
       <Image style={styles.image} source={{ uri: profile.avatar_url }} />
       <View style={styles.identification}>
-        <Text style={styles.identificationName}>{profile.name}</Text>
+        <Text style={styles.identificationName}>
+          {/* caso o usuário não tenha nome cadastrado */}
+          {profile.name || profile.login}
+        </Text>
         <Text style={styles.identificationLogin}>{profile.login}</Text>
       </View>
     </View>
@@ -20,7 +23,6 @@ const styles = StyleSheet.create({
   },
   details: {
     // backgroundColor: "#ccc",
-
     justifyContent: "center",
     flexDirection: "row",
   },

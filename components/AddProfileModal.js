@@ -1,8 +1,11 @@
 import { View, Modal, StyleSheet, Alert } from "react-native";
 import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
+import {
+  StatusBar,
+  setStatusBarNetworkActivityIndicatorVisible,
+} from "expo-status-bar";
 import axios from "../services/axios";
-import { ButtonText, InputButton, InputText } from "./ComponentesEstilizados";
+import { ButtonText, InputButton, InputText } from "./StyledComponents";
 
 export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
   const [enteredText, setEnteredText] = useState("");
@@ -16,8 +19,10 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
       .get(enteredText)
       .then((res) => {
         onAddProfile(res.data);
+        setNotVisible();
       })
       .catch((err) => {
+        console.log(err);
         Alert.alert("Erro!", "Esse perfil não existe.");
       });
     setEnteredText("");

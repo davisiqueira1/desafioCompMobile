@@ -4,7 +4,7 @@ import {
   InputText,
   InputButton,
   InputErrorMessage,
-} from "../components/ComponentesEstilizados";
+} from "../components/StyledComponents";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";

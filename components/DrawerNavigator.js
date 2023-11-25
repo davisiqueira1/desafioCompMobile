@@ -1,11 +1,11 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
-import CarrosselScreen from "../screens/CarrosselScreen";
-import FavoritosScreen from "../screens/FavoritosScreen";
+import CarrosselScreen from "../screens/SlideScreen";
+import FavoritosScreen from "../screens/FavoritesScreen";
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerNavigator({ route, navigation }) {
+export default function DrawerNavigator() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen

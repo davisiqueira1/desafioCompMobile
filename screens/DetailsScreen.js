@@ -6,7 +6,7 @@ import Profile from "../components/DetailsScreen/Profile";
 import { useContext, useLayoutEffect } from "react";
 import { FavoritesContext } from "../context/favoritesContext";
 
-export default function DetalhesScreen({ route, navigation }) {
+export default function DetailsScreen({ route, navigation }) {
   const favoriteProfilesCtx = useContext(FavoritesContext);
   const profile = route.params.profileDetails;
 
