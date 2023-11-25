@@ -4,7 +4,6 @@ import { useState } from "react";
 import { InputButton, ButtonText } from "../components/ComponentesEstilizados";
 import ModalAdicionar from "../components/ModalAdicionar";
 import defaultProfile from "../data/defaultProfile";
-import axios from "axios";
 
 export default function CarrosselScreen({ navigation }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);

@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import Card from "./Card";
 import Profile from "./DetailsScreen/Profile";
 

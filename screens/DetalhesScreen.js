@@ -1,5 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
-import NumberStats from "../components/DetailsScreen/NumberStats";
+import { View, StyleSheet } from "react-native";
 import DetailContainer from "../components/DetailsScreen/DetailContainer";
 import NumberStatsContainer from "../components/DetailsScreen/NumberStatsContainer";
 import Profile from "../components/DetailsScreen/Profile";
@@ -12,7 +11,7 @@ export default function DetalhesScreen({ route }) {
         <Profile style={styles.profile} profile={profile} />
         <NumberStatsContainer profile={profile} />
       </View>
-      <View style={styles.teste}>
+      <View style={styles.detailContainer}>
         <DetailContainer profile={profile} />
       </View>
     </View>
@@ -20,15 +19,8 @@ export default function DetalhesScreen({ route }) {
 }
 
 const styles = StyleSheet.create({
-  teste: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 8,
-    paddingVertical: 16,
-  },
   profile: {
-    marginBottom: 8,
-    paddingBottom: 16,
+    marginBottom: 24,
   },
   container: {
     flex: 1,
@@ -41,5 +33,11 @@ const styles = StyleSheet.create({
     marginTop: 24,
     flexDirection: "row",
     justifyContent: "center",
+  },
+  detailContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 8,
+    paddingVertical: 16,
   },
 });
