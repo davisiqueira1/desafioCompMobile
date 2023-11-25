@@ -4,9 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
 import { useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
 import DrawerNavigator from "./components/DrawerNavigator";
 import DetalhesScreen from "./screens/DetalhesScreen";
+import FavoritesContextProvider from "./context/favoritesContext";
 
 /**
  * TODO
@@ -17,6 +17,7 @@ import DetalhesScreen from "./screens/DetalhesScreen";
  *
  * criar fluxo de autenticação com perfil do github
  * (o primeiro card vai ter o nome e foto de perfil do usuario que deu login ao invés de ser hardcoded)
+ * tem como fazer isso?
  *
  * estilizar telas etc
  *
@@ -31,29 +32,18 @@ export default function App() {
     <>
       <StatusBar style="dark-content" />
       {logado ? (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              options={{ headerShown: false }}
-              name="Todos os perfis"
-              component={DrawerNavigator}
-            />
-            <Stack.Screen
-              options={{
-                headerRight: () => (
-                  <Ionicons
-                    style={{ marginRight: 16 }}
-                    name="star-outline"
-                    color="black"
-                    size={24}
-                  />
-                ),
-              }}
-              name="Detalhes"
-              component={DetalhesScreen}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <FavoritesContextProvider>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                options={{ headerShown: false }}
+                name="Todos os perfis"
+                component={DrawerNavigator}
+              />
+              <Stack.Screen name="Detalhes" component={DetalhesScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </FavoritesContextProvider>
       ) : (
         <LoginScreen loginHandler={setLogado.bind(this, true)} />
       )}
