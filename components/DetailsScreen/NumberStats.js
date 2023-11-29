@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 12,
   },
-  // achei mais interessante não usar as fontes no número de seguidores, etc...
   title: {
     alignSelf: "center",
     fontFamily: fonts.secondaryText,

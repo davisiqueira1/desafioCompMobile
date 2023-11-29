@@ -27,12 +27,7 @@ export default function LoginScreen({ loginHandler }) {
 
   return (
     <View style={styles.container}>
-      <Ionicons
-        style={{ marginBottom: 24 }}
-        name="logo-github"
-        size={128}
-        color="black"
-      />
+      <Ionicons style={{ marginBottom: 24 }} name="logo-github" size={128} />
       <Controller
         control={control}
         render={({ field: { onChange, value } }) => (

@@ -8,6 +8,7 @@ import { loadAsync } from "expo-font";
 import DrawerNavigator from "./components/DrawerNavigator";
 import DetailsScreen from "./screens/DetailsScreen";
 import FavoritesContextProvider from "./context/favoritesContext";
+import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 
@@ -39,7 +40,24 @@ export default function App() {
                 name="Todos os perfis"
                 component={DrawerNavigator}
               />
-              <Stack.Screen name="Detalhes" component={DetailsScreen} />
+              <Stack.Screen
+                options={{
+                  headerLeft: ({ onPress }) => (
+                    <Ionicons
+                      name="chevron-back-outline"
+                      style={{ marginLeft: 15 }}
+                      size={22}
+                      onPress={onPress}
+                    />
+                  ),
+                  headerTitleStyle: {
+                    fontFamily: fonts.primaryText,
+                    fontSize: 22,
+                  },
+                }}
+                name="Detalhes"
+                component={DetailsScreen}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </FavoritesContextProvider>

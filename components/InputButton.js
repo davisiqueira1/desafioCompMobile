@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontFamily: fonts.secondaryText,
+    fontFamily: fonts.primaryText,
+    fontSize: 18,
   },
 });
