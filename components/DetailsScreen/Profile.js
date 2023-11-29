@@ -1,5 +1,6 @@
 import { View, Image, Text, StyleSheet } from "react-native";
 import colorPalette from "../../constants/colorPalette";
+import fonts from "../../constants/fonts";
 
 export default function Profile({ profile, style }) {
   return (
@@ -33,10 +34,11 @@ const styles = StyleSheet.create({
   },
   identificationName: {
     fontSize: 24,
+    fontFamily: fonts.primaryText,
   },
   identificationLogin: {
     fontSize: 14,
-    fontWeight: "300",
+    fontFamily: fonts.text,
     color: colorPalette.secondaryColor,
   },
 });

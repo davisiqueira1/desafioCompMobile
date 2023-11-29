@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   detailContainer: {
-    backgroundColor: colorPalette.backgroundColor,
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 24,

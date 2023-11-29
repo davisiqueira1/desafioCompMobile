@@ -3,21 +3,29 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { loadAsync } from "expo-font";
 import DrawerNavigator from "./components/DrawerNavigator";
 import DetailsScreen from "./screens/DetailsScreen";
 import FavoritesContextProvider from "./context/favoritesContext";
-
-/**
- *
- * estilizar telas etc
- *
- */
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [logged, setLogged] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    loadAsync({
+      "garamond-regular": require("./assets/fonts/EBGaramond-Regular.ttf"),
+      "montserrat-regular": require("./assets/fonts/Montserrat-Regular.ttf"),
+      "felixtitling-regular": require("./assets/fonts/FelixTitling-Regular.ttf"),
+    }).then(() => {
+      setFontLoaded(true);
+    });
+  }, []);
+
+  if (!fontLoaded) return null;
 
   return (
     <>

@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderWidth: 1,
     borderRadius: 10,
-    backgroundColor: "white",
     borderColor: colorPalette.borderColor,
     flexDirection: "row",
     justifyContent: "space-evenly",

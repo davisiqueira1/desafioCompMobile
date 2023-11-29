@@ -5,6 +5,7 @@ import InputButton from "../components/InputButton";
 import AddProfileModal from "../components/AddProfileModal";
 import defaultProfiles from "../data/defaultProfiles";
 import colorPalette from "../constants/colorPalette";
+import fonts from "../constants/fonts";
 
 export default function CarrosselScreen({ navigation }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -20,7 +21,7 @@ export default function CarrosselScreen({ navigation }) {
         <Text style={styles.title}>{"Todos\nos\nperfis"}</Text>
       </View> */}
       {/* <View style={styles.carrosselContainer}> */}
-      <Text style={styles.title}>Todos os perfis</Text>
+      <Text style={styles.title}>TODOS OS PERFIS</Text>
       <Carrossel navigation={navigation} data={userList} />
       <InputButton
         onPress={setModalIsVisible.bind(this, true)}
@@ -54,8 +55,8 @@ const styles = StyleSheet.create({
     // backgroundColor: "yellow",
   },
   title: {
-    fontSize: 52,
-    fontWeight: "bold",
+    fontSize: 38,
+    fontFamily: fonts.title,
     textAlign: "center",
   },
   carrosselContainer: {

@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import colorPalette from "../../constants/colorPalette";
+import fonts from "../../constants/fonts";
 
 export default function DetailRow({
   onPress,
@@ -32,13 +33,16 @@ export default function DetailRow({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginVertical: 15,
+    marginVertical: 12,
   },
   title: {
+    fontFamily: fonts.primaryText,
+    fontSize: 18,
     marginLeft: 6,
   },
   text: {
-    fontWeight: "300",
+    fontFamily: fonts.secondaryText,
+    fontSize: 14,
     color: colorPalette.secondaryColor,
   },
 });

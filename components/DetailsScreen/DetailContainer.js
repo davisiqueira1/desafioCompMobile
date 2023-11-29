@@ -6,7 +6,7 @@ export default function DetailContainer({ profile }) {
     <View style={styles.container}>
       <DetailRow
         onPress={() => Linking.openURL(profile.html_url)}
-        title="URL:"
+        title="Link:"
         iconName="logo-github"
         text={profile.html_url}
       />

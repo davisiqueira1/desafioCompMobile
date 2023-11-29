@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import colorPalette from "../../constants/colorPalette";
+import fonts from "../../constants/fonts";
 
 export default function NumberStats({ onPress, title, subtitle }) {
   return (
@@ -14,12 +15,14 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 12,
   },
+  // achei mais interessante não usar as fontes no número de seguidores, etc...
   title: {
     alignSelf: "center",
-    fontSize: 20,
+    fontFamily: fonts.secondaryText,
+    fontSize: 21,
   },
   subtitle: {
-    fontWeight: "300",
+    fontFamily: fonts.secondaryText,
     color: colorPalette.secondaryColor,
   },
 });
