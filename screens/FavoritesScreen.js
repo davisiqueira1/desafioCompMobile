@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import Carrossel from "../components/Slide";
+import Carrossel from "../components/Carrossel";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/favoritesContext";
+import colorPalette from "../constants/colorPalette";
 
 export default function FavoritosScreen({ navigation }) {
   const favoriteProfiles = useContext(FavoritesContext).favorites;
@@ -20,6 +21,7 @@ export default function FavoritosScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colorPalette.backgroundColor,
     justifyContent: "center",
     alignItems: "center",
   },

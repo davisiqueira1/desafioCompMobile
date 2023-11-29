@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import colorPalette from "../constants/colorPalette";
 
 export const InputText = styled.TextInput`
   height: 50px;
@@ -7,7 +8,7 @@ export const InputText = styled.TextInput`
   margin-bottom: 8px;
   padding-left: 12px;
   border-width: 1px;
-  border-color: #353935;
+  border-color: ${colorPalette.primaryColor};
 `;
 
 export const ButtonText = styled.Text`

@@ -1,43 +1,52 @@
-import { View } from "react-native";
+import { View, StyleSheet, Linking } from "react-native";
 import DetailRow from "./DetailRow";
 
 export default function DetailContainer({ profile }) {
   return (
-    <View>
-      <DetailRow iconName="logo-github" text={"URL: " + profile.url} />
+    <View style={styles.container}>
+      <DetailRow
+        onPress={() => Linking.openURL(profile.html_url)}
+        title="URL:"
+        iconName="logo-github"
+        text={profile.html_url}
+      />
       <DetailRow
         iconName="briefcase"
-        text={"Company: " + (profile.company || "No information is available")}
+        title="Empresa:"
+        text={profile.company || "Sem informações disponíveis"}
       />
       <DetailRow
         iconName="locate"
-        text={
-          "Location: " + (profile.location || "No information is available")
-        }
+        title="Localização:"
+        text={profile.location || "Sem informações disponíveis"}
       />
       <DetailRow
         iconName="mail"
-        text={"Email: " + (profile.email || "No information is available")}
+        title="Email:"
+        text={profile.email || "Sem informações disponíveis"}
       />
       <DetailRow
         iconName="logo-twitter"
-        text={
-          "Twitter: " +
-          (profile.twitter_username || "No information is available")
-        }
+        title="Twitter:"
+        text={profile.twitter_username || "Sem informações disponíveis"}
       />
       <DetailRow
         iconName="create"
-        text={
-          "Created at: " + (profile.created_at || "No information is available")
-        }
+        title="Data de criação:"
+        text={profile.created_at || "Sem informações disponíveis"}
       />
       <DetailRow
         iconName="refresh"
-        text={
-          "Updated at: " + (profile.updated_at || "No information is available")
-        }
+        title="Última modificação:"
+        text={profile.updated_at || "Sem informações disponíveis"}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+    borderRadius: 10,
+  },
+});

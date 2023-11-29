@@ -1,14 +1,11 @@
 import { View, StyleSheet } from "react-native";
-import {
-  ButtonText,
-  InputText,
-  InputErrorMessage,
-} from "../components/StyledComponents";
+import { InputText, InputErrorMessage } from "../components/StyledComponents";
 import InputButton from "../components/InputButton";
 import { Ionicons } from "@expo/vector-icons";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import colorPalette from "../constants/colorPalette";
 
 const loginFormSchema = yup.object().shape({
   email: yup
@@ -36,7 +33,6 @@ export default function LoginScreen({ loginHandler }) {
         size={128}
         color="black"
       />
-      {/* <Image/> logo do github */}
       <Controller
         control={control}
         render={({ field: { onChange, value } }) => (
@@ -79,6 +75,7 @@ export default function LoginScreen({ loginHandler }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colorPalette.backgroundColor,
     justifyContent: "center",
     alignItems: "center",
   },

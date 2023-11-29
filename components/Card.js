@@ -1,11 +1,12 @@
 import { View, StyleSheet, Pressable, useWindowDimensions } from "react-native";
-export default function Card({ onPress, children }) {
+import colorPalette from "../constants/colorPalette";
+export default function Card({ onPress, children, index }) {
   const { width } = useWindowDimensions();
 
   return (
-    <View style={[styles.container, { width: width }]}>
+    <View style={[styles.container, { width: width - 30 }]}>
       <Pressable style={styles.pressableContainer} onPress={onPress}>
-        <View style={styles.content}>{children}</View>
+        <View>{children}</View>
       </Pressable>
     </View>
   );
@@ -13,13 +14,18 @@ export default function Card({ onPress, children }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
-    backgroundColor: "#ccc",
+    marginVertical: 10,
+    backgroundColor: colorPalette.cardBackground,
+    borderWidth: 1,
+    borderColor: colorPalette.cardBorder,
+    borderRadius: 10,
+    marginLeft: 4,
+    marginRight: 8,
+    elevation: 2,
   },
   pressableContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  content: {},
 });

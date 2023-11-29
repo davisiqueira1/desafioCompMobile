@@ -1,4 +1,5 @@
 import { View, Image, Text, StyleSheet } from "react-native";
+import colorPalette from "../../constants/colorPalette";
 
 export default function Profile({ profile, style }) {
   return (
@@ -16,18 +17,18 @@ export default function Profile({ profile, style }) {
 }
 
 const styles = StyleSheet.create({
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
   details: {
     // backgroundColor: "#ccc",
     justifyContent: "center",
     flexDirection: "row",
   },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
   identification: {
-    marginLeft: 28,
+    marginLeft: 42,
     justifyContent: "center",
   },
   identificationName: {
@@ -35,5 +36,7 @@ const styles = StyleSheet.create({
   },
   identificationLogin: {
     fontSize: 14,
+    fontWeight: "300",
+    color: colorPalette.secondaryColor,
   },
 });

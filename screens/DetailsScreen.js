@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Profile from "../components/DetailsScreen/Profile";
 import { useContext, useLayoutEffect } from "react";
 import { FavoritesContext } from "../context/favoritesContext";
+import colorPalette from "../constants/colorPalette";
 
 export default function DetailsScreen({ route, navigation }) {
   const favoriteProfilesCtx = useContext(FavoritesContext);
@@ -34,7 +35,9 @@ export default function DetailsScreen({ route, navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.profileStats}>
-        <Profile style={styles.profile} profile={profile} />
+        <View style={styles.profileContainer}>
+          <Profile profile={profile} />
+        </View>
         <NumberStatsContainer profile={profile} />
       </View>
       <View style={styles.detailContainer}>
@@ -45,15 +48,20 @@ export default function DetailsScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  profile: {
-    marginBottom: 24,
-  },
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: colorPalette.backgroundColor,
   },
   profileStats: {
-    marginTop: 32,
+    paddingTop: 32,
+  },
+  profileContainer: {
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: colorPalette.borderColor,
+    marginHorizontal: 24,
+    paddingVertical: 24,
+    borderRadius: 10,
   },
   numberStats: {
     marginTop: 24,
@@ -61,9 +69,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   detailContainer: {
+    backgroundColor: colorPalette.backgroundColor,
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 8,
-    paddingVertical: 16,
+    marginHorizontal: 24,
+    marginVertical: 24,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colorPalette.borderColor,
+    // elevation: 1,
   },
 });

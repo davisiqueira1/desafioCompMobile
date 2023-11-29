@@ -6,19 +6,31 @@ import axios from "../services/axios";
 import { InputText } from "./StyledComponents";
 import InputButton from "./InputButton";
 
-export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
+export default function ModalAdicionar({
+  userList,
+  onAddProfile,
+  setNotVisible,
+}) {
   const [enteredText, setEnteredText] = useState("");
 
   const textInputHandler = (enteredText) => {
     setEnteredText(enteredText);
   };
 
+  const repeatedProfile = (id) => {
+    return userList.filter((profile) => profile.id === id).length !== 0;
+  };
+
   const addProfileHandler = () => {
     axios
       .get(enteredText)
       .then((res) => {
-        onAddProfile(res.data);
-        setNotVisible();
+        if (repeatedProfile(res.data.id))
+          Alert.alert("Erro!", "Esse perfil já foi adicionado.");
+        else {
+          onAddProfile(res.data);
+          setNotVisible();
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -43,7 +55,7 @@ export default function ModalAdicionar({ onAddProfile, setNotVisible }) {
             style={styles.inputText}
             onChangeText={textInputHandler}
             autoCapitalize="none"
-            value={enteredText} // quando adicionar um perfil, o campo vai ser limpo (linha 21)
+            value={enteredText} // quando adicionar um perfil, o campo vai ser limpo (linha 27)
           />
           <View style={styles.buttonContainer}>
             <InputButton style={styles.button} onPress={setNotVisible}>

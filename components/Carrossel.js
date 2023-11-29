@@ -13,13 +13,16 @@ export default function Carrossel({ navigation, data }) {
     <View style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <Card onPress={onCardPress.bind(this, navigation, item)}>
-            <Profile profile={item} />
+        renderItem={(item) => (
+          <Card
+            key={item.item.id}
+            index={item.index}
+            onPress={onCardPress.bind(this, navigation, item.item)}
+          >
+            <Profile profile={item.item} />
           </Card>
         )}
         horizontal
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
       />
     </View>
@@ -29,6 +32,7 @@ export default function Carrossel({ navigation, data }) {
 const styles = StyleSheet.create({
   container: {
     height: 200, // height do card
+    // elevation: 2,
   },
   image: {
     width: 100,

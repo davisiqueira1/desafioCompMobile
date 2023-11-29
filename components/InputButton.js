@@ -1,5 +1,6 @@
 import { View, Pressable, StyleSheet } from "react-native";
 import { ButtonText } from "./StyledComponents";
+import colorPalette from "../constants/colorPalette";
 
 export default function InputButton({ children, onPress, style }) {
   return (
@@ -7,7 +8,7 @@ export default function InputButton({ children, onPress, style }) {
       <Pressable
         style={styles.buttonInnerContainer}
         onPress={onPress}
-        android_ripple={{ color: "#000000" }}
+        android_ripple={{ color: "black" }}
       >
         <ButtonText>{children}</ButtonText>
       </Pressable>
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
   buttonInnerContainer: {
     flex: 1,
-    backgroundColor: "#353935",
+    backgroundColor: colorPalette.primaryColor,
     justifyContent: "center",
     alignItems: "center",
   },
